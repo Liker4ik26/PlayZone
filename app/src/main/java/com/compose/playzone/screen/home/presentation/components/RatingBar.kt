@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.compose.playzone.R
@@ -100,4 +101,10 @@ fun DrawScope.drawWithLayer(block: DrawScope.() -> Unit) {
         block()
         restoreToCount(checkPoint)
     }
+}
+
+@Preview
+@Composable
+fun RatingBarPreview() {
+    RatingBar(rating = 5f, spaceBetween = 4.3.dp)
 }

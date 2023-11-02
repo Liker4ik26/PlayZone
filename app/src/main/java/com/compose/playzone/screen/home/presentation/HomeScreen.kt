@@ -6,6 +6,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -37,6 +39,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.compose.playzone.R
+import com.compose.playzone.screen.home.presentation.components.CategoryChip
 import com.compose.playzone.screen.home.presentation.components.IconGameCard
 import com.compose.playzone.screen.home.presentation.components.ImageGameCard
 import com.compose.playzone.screen.home.presentation.components.InstallButton
@@ -45,7 +48,7 @@ import com.compose.playzone.screen.home.presentation.components.RatingCard
 import com.compose.playzone.screen.home.presentation.components.UserReviewCard
 import com.compose.playzone.screen.home.presentation.models.UserModel
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun HomeScreen() {
 
@@ -66,6 +69,15 @@ fun HomeScreen() {
             description = stringResource(R.string.description_1)
         ),
     )
+    val categories = listOf(
+        R.string.moba,
+        R.string.multiplayer,
+        R.string.strategy,
+        R.string.moba,
+        R.string.multiplayer,
+        R.string.strategy,
+    )
+
     Box(
         Modifier.fillMaxSize()
     ) {
@@ -83,7 +95,18 @@ fun HomeScreen() {
                         .background(MaterialTheme.colorScheme.primary)
                         .fillMaxWidth()
                 ) {
-                    Spacer(modifier = Modifier.height(94.dp))
+                    Spacer(modifier = Modifier.height(110.dp))
+                    FlowRow(
+                        modifier = Modifier.padding(horizontal = 24.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                        content = {
+                            for(item in categories){
+                                CategoryChip(title = item)
+                            }
+                        },
+                    )
+                    Spacer(modifier = Modifier.height(24.dp))
                     Text(
                         modifier = Modifier.padding(horizontal = 24.dp), text =
                         stringResource(R.string.description),
@@ -130,6 +153,7 @@ fun HomeScreen() {
                     ) {
                         InstallButton()
                     }
+                    Spacer(modifier = Modifier.height(34.dp))
                 }
             }
             Box(

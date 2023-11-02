@@ -16,7 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.compose.playzone.R
 import com.compose.playzone.screen.home.presentation.models.UserModel
 
 @Composable
@@ -53,4 +56,17 @@ fun UserReviewCard(userModel: UserModel) {
                 .copy(color = MaterialTheme.colorScheme.onTertiary)
         )
     }
+}
+
+@Preview
+@Composable
+fun UserReviewCardPreview() {
+    UserReviewCard(
+        UserModel(
+            image = R.drawable.user_image_2,
+            fullName = stringResource(R.string.full_name_2),
+            date = stringResource(R.string.date_1),
+            description = stringResource(R.string.description_1)
+        ),
+    )
 }
