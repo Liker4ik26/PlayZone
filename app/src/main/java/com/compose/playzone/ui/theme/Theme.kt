@@ -18,7 +18,8 @@ private val DarkColorScheme = darkColorScheme(
     surfaceTint = Color.White,
     tertiary = PictonBlue,
     onPrimary = Mirage,
-    onSecondary = EbonyClay
+    onSecondary = EbonyClay,
+    onTertiary = Aluminium
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -27,7 +28,8 @@ private val LightColorScheme = lightColorScheme(
     surfaceTint = Color.White,
     tertiary = PictonBlue,
     onPrimary = Mirage,
-    onSecondary = EbonyClay
+    onSecondary = EbonyClay,
+    onTertiary = Aluminium
 )
 
 
