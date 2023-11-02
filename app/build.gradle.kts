@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.filament.android)
     debugImplementation(libs.androidx.compose.tooling)
 
 }
