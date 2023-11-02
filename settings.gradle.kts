@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-src")
     repositories {
         google()
         mavenCentral()
@@ -12,7 +13,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
 rootProject.name = "PlayZone"
 include(":app")
- 
