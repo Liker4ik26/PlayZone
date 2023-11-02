@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalMinimumInteractiveComponentEnforcement
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -38,6 +39,8 @@ import com.compose.playzone.R
 import com.compose.playzone.screen.home.presentation.components.IconGameCard
 import com.compose.playzone.screen.home.presentation.components.ImageGameCard
 import com.compose.playzone.screen.home.presentation.components.InstallButton
+import com.compose.playzone.screen.home.presentation.components.UserReviewCard
+import com.compose.playzone.screen.home.presentation.models.UserModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,6 +49,20 @@ fun HomeScreen() {
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp
     val images = listOf(R.drawable.image_game_1, R.drawable.image_game_2)
+    val user = listOf<UserModel>(
+        UserModel(
+            image = R.drawable.user_image,
+            fullName = stringResource(R.string.full_name_1),
+            date = stringResource(R.string.date_1),
+            description = stringResource(R.string.description_1)
+        ),
+        UserModel(
+            image = R.drawable.user_image_2,
+            fullName = stringResource(R.string.full_name_2),
+            date = stringResource(R.string.date_1),
+            description = stringResource(R.string.description_1)
+        ),
+    )
     Box(
         Modifier.fillMaxSize()
     ) {
@@ -80,7 +97,32 @@ fun HomeScreen() {
                             }
                         },
                     )
-                    Spacer(modifier = Modifier.height(51.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Text(
+                        modifier = Modifier.padding(horizontal = 24.dp), text = "Review & Ratings",
+                        style = MaterialTheme.typography.titleSmall
+                            .copy(color = MaterialTheme.colorScheme.surfaceTint)
+                    )
+                    Spacer(modifier = Modifier.height(28.dp))
+                    UserReviewCard(user[0])
+                    Spacer(modifier = Modifier.height(95.dp))
+                    HorizontalDivider(
+                        modifier = Modifier
+                            .padding(horizontal = 38.dp)
+                            .border(
+                                1.dp,
+                                MaterialTheme.colorScheme.onSecondary
+                            )
+
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        modifier = Modifier.padding(horizontal = 24.dp),
+                        text = stringResource(R.string.description_1),
+                        style = MaterialTheme.typography.displayMedium
+                            .copy(color = MaterialTheme.colorScheme.onTertiary)
+                    )
+                    Spacer(modifier = Modifier.height(40.dp))
                     CompositionLocalProvider(
                         LocalMinimumInteractiveComponentEnforcement provides false,
                     ) {

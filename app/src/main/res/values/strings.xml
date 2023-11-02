@@ -2,4 +2,8 @@
     <string name="app_name">PlayZone</string>
     <string name="description">Dota 2 is a multiplayer online battle arena (MOBA) game which has two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the \"Ancient\", whilst defending their own.</string>
     <string name="button_text">Install</string>
+    <string name="full_name_1">Auguste Conte</string>
+    <string name="date_1">February 14, 2019</string>
+    <string name="description_1">"Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers."</string>
+    <string name="full_name_2">Jang Marcelino</string>
 </resources>

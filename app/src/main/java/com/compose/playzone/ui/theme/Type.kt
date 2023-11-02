@@ -41,6 +41,20 @@ val Typography = Typography(
         lineHeight = 19.2.sp,
         letterSpacing = 0.6.sp
     ),
+    labelSmall = TextStyle(
+        fontFamily = SkModernist,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 19.2.sp,
+        letterSpacing = 0.6.sp
+    ),
+    displaySmall =  TextStyle(
+        fontFamily = SkModernist,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        lineHeight = 14.4.sp,
+        letterSpacing = 0.5.sp
+    ),
     bodyMedium = TextStyle(
         fontFamily = SkModernist,
         fontWeight = FontWeight.Normal,
@@ -60,6 +74,13 @@ val Typography = Typography(
         fontWeight = FontWeight.Medium,
         fontSize = 10.sp,
         lineHeight = 12.19.sp,
+        letterSpacing = 0.5.sp
+    ),
+    displayMedium = TextStyle(
+        fontFamily = SkModernist,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        lineHeight = 20.sp,
         letterSpacing = 0.5.sp
     ),
 )
