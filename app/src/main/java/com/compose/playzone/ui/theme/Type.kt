@@ -48,7 +48,7 @@ val Typography = Typography(
         lineHeight = 19.2.sp,
         letterSpacing = 0.6.sp
     ),
-    displaySmall =  TextStyle(
+    displaySmall = TextStyle(
         fontFamily = SkModernist,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,

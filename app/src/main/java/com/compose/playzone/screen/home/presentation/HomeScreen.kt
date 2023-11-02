@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -39,6 +40,8 @@ import com.compose.playzone.R
 import com.compose.playzone.screen.home.presentation.components.IconGameCard
 import com.compose.playzone.screen.home.presentation.components.ImageGameCard
 import com.compose.playzone.screen.home.presentation.components.InstallButton
+import com.compose.playzone.screen.home.presentation.components.RatingBar
+import com.compose.playzone.screen.home.presentation.components.RatingCard
 import com.compose.playzone.screen.home.presentation.components.UserReviewCard
 import com.compose.playzone.screen.home.presentation.models.UserModel
 
@@ -49,7 +52,7 @@ fun HomeScreen() {
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp
     val images = listOf(R.drawable.image_game_1, R.drawable.image_game_2)
-    val user = listOf<UserModel>(
+    val user = listOf(
         UserModel(
             image = R.drawable.user_image,
             fullName = stringResource(R.string.full_name_1),
@@ -99,29 +102,28 @@ fun HomeScreen() {
                     )
                     Spacer(modifier = Modifier.height(24.dp))
                     Text(
-                        modifier = Modifier.padding(horizontal = 24.dp), text = "Review & Ratings",
+                        modifier = Modifier.padding(horizontal = 24.dp),
+                        text = stringResource(R.string.review_ratings),
                         style = MaterialTheme.typography.titleSmall
                             .copy(color = MaterialTheme.colorScheme.surfaceTint)
                     )
-                    Spacer(modifier = Modifier.height(28.dp))
-                    UserReviewCard(user[0])
-                    Spacer(modifier = Modifier.height(95.dp))
-                    HorizontalDivider(
-                        modifier = Modifier
-                            .padding(horizontal = 38.dp)
-                            .border(
-                                1.dp,
-                                MaterialTheme.colorScheme.onSecondary
-                            )
+                    Spacer(modifier = Modifier.height(12.dp))
+                    RatingCard(rating = 4.9f, modifier = Modifier.padding(horizontal = 24.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
+                    for ((index) in user.withIndex()) {
+                        UserReviewCard(user[index])
+                        if (index != user.size - 1) {
+                            HorizontalDivider(
+                                modifier = Modifier
+                                    .padding(horizontal = 38.dp, vertical = 24.dp)
+                                    .border(
+                                        1.dp,
+                                        MaterialTheme.colorScheme.onSecondary
+                                    )
 
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        modifier = Modifier.padding(horizontal = 24.dp),
-                        text = stringResource(R.string.description_1),
-                        style = MaterialTheme.typography.displayMedium
-                            .copy(color = MaterialTheme.colorScheme.onTertiary)
-                    )
+                            )
+                        }
+                    }
                     Spacer(modifier = Modifier.height(40.dp))
                     CompositionLocalProvider(
                         LocalMinimumInteractiveComponentEnforcement provides false,
@@ -130,13 +132,41 @@ fun HomeScreen() {
                     }
                 }
             }
-            IconGameCard(
+            Box(
                 modifier = Modifier
-                    .align(alignment = Alignment.CenterStart)
-                    .height(84.dp)
-                    .offset(24.dp, (-screenHeight / 2.8).dp)
-                    .width(84.dp),
-            )
+                    .fillMaxWidth()
+                    .background(color = MaterialTheme.colorScheme.primary)
+                    .align(alignment = Alignment.TopStart)
+                    .offset(0.dp, (screenHeight / 4).dp)
+                    .height(95.dp)
+            ) {
+                Row {
+                    IconGameCard(
+                        modifier = Modifier
+                            .height(84.dp)
+                            .offset(24.dp, (-screenHeight / 3.6).dp)
+                            .width(84.dp),
+                    )
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Column(Modifier.offset(24.dp, (-screenHeight / 4.1).dp)) {
+                        Text(
+                            stringResource(R.string.dota_2),
+                            style = MaterialTheme.typography.titleMedium
+                                .copy(color = Color.White)
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Row {
+                            RatingBar(rating = 5f, spaceBetween = 4.3.dp)
+                            Spacer(modifier = Modifier.width(10.dp))
+                            Text(
+                                stringResource(R.string._70m),
+                                style = MaterialTheme.typography.displaySmall
+                                    .copy(color = Color.White.copy(0.4f))
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
     Box(
