@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.compose.playzone.R
 import com.compose.playzone.screen.home.utils.drawNeonStroke
@@ -39,4 +40,10 @@ fun InstallButton() {
             style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary)
         )
     }
+}
+
+@Preview
+@Composable
+fun InstallButtonPreview() {
+    InstallButton()
 }
